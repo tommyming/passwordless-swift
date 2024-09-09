@@ -45,7 +45,7 @@ public struct MagicLinkToken {
     public let additionalData: [String: Any]?
 }
 
-public struct AuthenticatedUser {
+public struct AuthenticatedUser: Codable {
     public let id: String
     public let email: String
 }
