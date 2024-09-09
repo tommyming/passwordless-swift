@@ -1,6 +1,7 @@
 import XCTest
 @testable import Passwordless
 
+
 class MagicLinkActorTests: XCTestCase {
     var sut: MagicLinkActor!
     var mockURLSession: MockURLSession!
@@ -10,7 +11,7 @@ class MagicLinkActorTests: XCTestCase {
         super.setUp()
         let baseURL = URL(string: "https://example.com")!
         mockURLSession = MockURLSession()
-        mockTokenManager = MockTokenManager()
+        mockTokenManager = MockTokenManager(secretKey: "12345678")
         sut = MagicLinkActor(baseURL: baseURL, session: mockURLSession, tokenManager: mockTokenManager)
     }
     
@@ -114,15 +115,15 @@ class MockURLSession: URLSession {
     var mockData: Data?
     var mockResponse: URLResponse?
     var mockError: Error?
-    
-    override func data(for request: URLRequest, delegate: URLSessionTaskDelegate? = nil) async throws -> (Data, URLResponse) {
+
+    func data(for request: URLRequest, delegate: URLSessionTaskDelegate? = nil) async throws -> (Data, URLResponse) {
         if let mockError = mockError {
             throw mockError
         }
         return (mockData ?? Data(), mockResponse ?? URLResponse())
     }
     
-    override func upload(for request: URLRequest, from bodyData: Data, delegate: URLSessionTaskDelegate? = nil) async throws -> (Data, URLResponse) {
+    func upload(for request: URLRequest, from bodyData: Data, delegate: URLSessionTaskDelegate? = nil) async throws -> (Data, URLResponse) {
         if let mockError = mockError {
             throw mockError
         }
