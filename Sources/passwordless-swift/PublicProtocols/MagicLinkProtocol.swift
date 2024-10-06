@@ -38,14 +38,3 @@ public protocol MagicLinkProtocol {
     /// - Returns: A decoded MagicLinkToken object
     func decodeToken(_ token: String) throws -> MagicLinkToken
 }
-
-public struct MagicLinkToken {
-    public let email: String
-    public let expirationTime: Date
-    public let additionalData: [String: Any]?
-}
-
-public struct AuthenticatedUser: Codable {
-    public let id: String
-    public let email: String
-}
