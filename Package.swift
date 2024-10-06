@@ -33,5 +33,6 @@ let package = Package(
         .testTarget(
             name: "passwordless-swiftTests",
             dependencies: ["Passwordless"]),
-    ]
+    ],
+    swiftLanguageModes: [.v5, .v6]
 )
