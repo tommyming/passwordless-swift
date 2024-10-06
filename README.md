@@ -1,5 +1,4 @@
 # passwordless-swift
 
-NOTE: The library is not ready in use, please do not use it, thanks.
-
-This project aims to provide an easier implementation for Swift Developers to implement Passwordless Authenication.
+A for-fun project, which tries to provide basic protocols and implementation of passwordless implementation
+Maybe someday this package will be workable, just some day :).
